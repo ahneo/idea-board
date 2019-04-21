@@ -1,13 +1,16 @@
 import React from "react";
 
-const Idea = props => {
-  return (
-    <div className="idea">
-      <span className="idea-title">{props.title}</span>
-      <br />
-      {props.body}
-    </div>
-  );
-};
+class Idea extends React.Component {
+  render() {
+    const { title, body } = this.props;
+    return (
+      <div className="idea">
+        <span className="idea-title">{title}</span>
+        <br />
+        {body}
+      </div>
+    );
+  }
+}
 
 export default Idea;
