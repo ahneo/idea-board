@@ -56,7 +56,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Ideas Board!</h1>
+        <header className="header">
+          <span className="header__title">Ideas Board!</span>
+          <button className="header__button" type="button">
+            Add new idea!
+          </button>
+        </header>
         {this.state.ideas.map(idea => {
           return <Idea key={idea.id} title={idea.title} body={idea.body} />;
         })}
