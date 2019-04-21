@@ -1,4 +1,4 @@
-.postit {
+.idea {
   line-height: 1;
   text-align: center;
   width: 130px;
@@ -59,7 +59,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffffc6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.postit:after {
+.idea:after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -76,7 +76,7 @@
   transform: matrix(-1, -0.1, 0, 1, 0, 0);
 }
 
-.postit-title {
+.idea-title {
   font-size: 1.2em;
   font-weight: bold;
 }
