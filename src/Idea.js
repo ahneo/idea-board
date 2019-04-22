@@ -1,15 +1,45 @@
 import React from "react";
 
 class Idea extends React.Component {
+  state = {
+    title: this.props.title,
+    body: this.props.body
+  };
+  handleIdeaClick = event => {
+    this.props.onIdeaClick(this.props.id);
+  };
+  handleTitleChange = event => {
+    this.setState({
+      title: event.target.value
+    });
+  };
+  handleBodyChange = event => {
+    this.setState({
+      body: event.target.value
+    });
+  };
   render() {
-    const { title, body, active } = this.props;
+    const { id, title, body, active } = this.props;
     return (
-      <div className="idea">
+      <div className="idea" onClick={this.handleIdeaClick}>
         {active ? (
           <div>
-            <input type="text" value="idea title" autoFocus />
+            <input
+              type="text"
+              value={this.state.title}
+              onChange={this.handleTitleChange}
+              autoFocus={true}
+            />
             <br />
-            <input type="textarea" value="enter your idea here" />
+            <br />
+            <textarea
+              rows="7"
+              cols="20"
+              onChange={this.handleBodyChange}
+              maxlength="140"
+            >
+              {this.state.body}
+            </textarea>
           </div>
         ) : (
           <div>

@@ -3,15 +3,11 @@ import ReactDOM from "react-dom";
 import Idea from "./Idea";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      ideas: [],
-      ideas_id_count: 5,
-      idea_active_id: -1
-    };
-  }
+  state = {
+    ideas: [],
+    ideas_id_count: 5,
+    idea_active_id: -1
+  };
   componentDidMount() {
     //TODO:call API to get ideas
     let ideas = [
@@ -71,6 +67,11 @@ class App extends React.Component {
       idea_active_id: this.state.ideas_id_count
     });
   };
+  handleIdeaClick = idea_id => {
+    this.setState({
+      idea_active_id: idea_id
+    });
+  };
   render() {
     return (
       <div>
@@ -88,9 +89,11 @@ class App extends React.Component {
           return (
             <Idea
               key={idea.id}
+              id={idea.id}
               title={idea.title}
               body={idea.body}
               active={this.state.idea_active_id === idea.id}
+              onIdeaClick={this.handleIdeaClick}
             />
           );
         })}
