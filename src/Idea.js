@@ -4,8 +4,8 @@ class Idea extends React.Component {
   state = {
     title: this.props.title,
     body: this.props.body,
-    title_blur: false,
-    body_blur: true,
+    isTitleBlurred: false,
+    isBodyBlurred: true,
     isMouseEntered: false
   };
   handleIdeaClick = event => {
@@ -23,17 +23,17 @@ class Idea extends React.Component {
   };
   handleTitleFocus = event => {
     this.setState({
-      title_blur: false
+      isTitleBlurred: false
     });
   };
   handleBodyFocus = event => {
     this.setState({
-      body_blur: false
+      isBodyBlurred: false
     });
   };
   handleTitleBlur = event => {
     this.setState({
-      title_blur: true
+      isTitleBlurred: true
     });
     this.checkIdeaBlur();
     //trigger an update request when title field is blurred
@@ -41,7 +41,7 @@ class Idea extends React.Component {
   };
   handleBodyBlur = event => {
     this.setState({
-      body_blur: true
+      isBodyBlurred: true
     });
     this.checkIdeaBlur();
     //trigger an update request when body field is blurred
@@ -49,7 +49,7 @@ class Idea extends React.Component {
   };
   checkIdeaBlur = () => {
     setTimeout(() => {
-      if (this.state.title_blur && this.state.body_blur) {
+      if (this.state.isTitleBlurred && this.state.isBodyBlurred) {
         this.props.onIdeaLeave();
       }
     }, 50);
