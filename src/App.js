@@ -9,7 +9,7 @@ class App extends React.Component {
     idea_active_id: -1
   };
   componentDidMount() {
-    //TODO:call API to get ideas
+    //TODO:call API(GET ideas/) to get ideas
     let ideas = [
       {
         id: 1,
@@ -51,15 +51,15 @@ class App extends React.Component {
       ideas
     });
   }
-  handleAddClick = event => {
-    //TODO:call API to get new idea
+  addIdea = event => {
+    //TODO:call API(GET ideas/new) to get new idea
     this.setState({
       ideas_id_count: ++this.state.ideas_id_count,
       ideas: [
         ...this.state.ideas,
         {
           id: this.state.ideas_id_count,
-          created_date: "2014-01-01T23:28:56.782Z",
+          created_date: new Date().toJSON(),
           title: "idea title",
           body: "enter your idea here"
         }
@@ -73,10 +73,27 @@ class App extends React.Component {
       idea_active_id: idea_id
     });
   };
-  handleIdeaBlur = () => {
+  handleIdeaBlur = (idea_id, idea_title, idea_body) => {
     //set state to no active idea
     this.setState({
       idea_active_id: -1
+    });
+
+    //TODO:call API(POST idea/update) to update idea
+    this.updateIdea(idea_id, idea_title, idea_body);
+  };
+  updateIdea = (idea_id, idea_title, idea_body) => {
+    this.setState({
+      ideas: this.state.ideas.map(function(idea) {
+        return idea.id !== idea_id
+          ? idea
+          : {
+              id: idea.id,
+              created_date: idea.created_date,
+              title: idea_title,
+              body: idea_body
+            };
+      })
     });
   };
   render() {
@@ -86,7 +103,7 @@ class App extends React.Component {
           <span className="header__title">Ideas Board!</span>
           <button
             className="header__button"
-            onClick={this.handleAddClick}
+            onClick={this.addIdea}
             type="button"
           >
             Add new idea!

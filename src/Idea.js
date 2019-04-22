@@ -45,7 +45,7 @@ class Idea extends React.Component {
   checkIdeaBlur = () => {
     setTimeout(() => {
       if (this.state.title_blur && this.state.body_blur) {
-        this.props.onIdeaBlur();
+        this.props.onIdeaBlur(this.props.id, this.state.title, this.state.body);
       }
     }, 50);
   };
@@ -68,13 +68,12 @@ class Idea extends React.Component {
             <textarea
               rows="7"
               cols="20"
+              value={this.state.body}
               onChange={this.handleBodyChange}
               onFocus={this.handleBodyFocus}
               onBlur={this.handleBodyBlur}
               maxLength="140"
-            >
-              {this.state.body}
-            </textarea>
+            />
           </div>
         ) : (
           <div>
