@@ -136,6 +136,15 @@ class App extends React.Component {
             />
           );
         })}
+        <footer className="footer__info">
+          <p>To edit an idea, click on it!</p>
+          <p>
+            Created by <a href="https://github.com/ahneo/">henryneo</a>
+          </p>
+          <p>
+            Code in <a href="https://github.com/ahneo/idea-board">github</a>
+          </p>
+        </footer>
       </div>
     );
   }

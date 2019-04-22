@@ -11,7 +11,6 @@
   font-size: 50px;
   text-decoration: none;
   font-weight: bold;
-  display: block;
 }
 
 .header__button {
@@ -56,6 +55,7 @@
   font-size: 16px;
   display: inline-block;
   vertical-align: top;
+  cursor: pointer;
   background: #ffff88; /* Old browsers */
   background: -moz-linear-gradient(
     -45deg,
@@ -154,4 +154,12 @@
 
 .button__idea__delete:after {
   content: "×";
+}
+
+.footer__info {
+  color: #333;
+  font-size: 20px;
+  font-family: "Reenie Beanie";
+  text-decoration: none;
+  text-align: center;
 }
