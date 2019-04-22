@@ -135,3 +135,23 @@
   border: 1px solid lightgray;
   outline: none;
 }
+
+.button__idea__delete {
+  width: 20px;
+  height: 24px;
+  color: red;
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.button__idea__delete:after {
+  content: "×";
+}

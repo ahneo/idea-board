@@ -5,7 +5,8 @@ class Idea extends React.Component {
     title: this.props.title,
     body: this.props.body,
     title_blur: false,
-    body_blur: true
+    body_blur: true,
+    isMouseEntered: false
   };
   handleIdeaClick = event => {
     this.props.onIdeaClick(this.props.id);
@@ -53,10 +54,29 @@ class Idea extends React.Component {
       }
     }, 50);
   };
+  handleMouseEnter = event => {
+    this.setState({
+      isMouseEntered: true
+    });
+  };
+  handleMouseLeave = event => {
+    this.setState({
+      isMouseEntered: false
+    });
+  };
+  handleIdeaDelete = event => {
+    event.stopPropagation();
+    this.props.onIdeaDelete(this.props.id);
+  };
   render() {
     const { id, title, body, active } = this.props;
     return (
-      <div className="idea" onClick={this.handleIdeaClick}>
+      <div
+        className="idea"
+        onClick={this.handleIdeaClick}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
         {active ? (
           <div>
             <input
@@ -73,7 +93,7 @@ class Idea extends React.Component {
             <textarea
               className="input__idea__body"
               rows="7"
-              cols="20"
+              cols="18"
               value={this.state.body}
               onChange={this.handleBodyChange}
               onFocus={this.handleBodyFocus}
@@ -84,6 +104,12 @@ class Idea extends React.Component {
         ) : (
           <div>
             <span className="span__idea__title">{title}</span>
+            {this.state.isMouseEntered ? (
+              <button
+                className="button__idea__delete"
+                onClick={this.handleIdeaDelete}
+              />
+            ) : null}
             <br />
             <span>{body}</span>
           </div>

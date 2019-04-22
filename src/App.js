@@ -97,6 +97,17 @@ class App extends React.Component {
       })
     });
   };
+  handleIdeaDelete = idea_id => {
+    //TODO:call API(POST idea/delete) to delete idea
+    this.deleteIdea(idea_id);
+  };
+  deleteIdea = idea_id => {
+    this.setState({
+      ideas: this.state.ideas.filter(function(idea) {
+        return idea.id !== idea_id;
+      })
+    });
+  };
   render() {
     return (
       <div>
@@ -121,6 +132,7 @@ class App extends React.Component {
               onIdeaClick={this.handleIdeaClick}
               onIdeaLeave={this.handleIdeaLeave}
               onIdeaUpdate={this.handleIdeaUpdate}
+              onIdeaDelete={this.handleIdeaDelete}
             />
           );
         })}
