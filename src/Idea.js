@@ -36,7 +36,7 @@ class Idea extends React.Component {
               rows="7"
               cols="20"
               onChange={this.handleBodyChange}
-              maxlength="140"
+              maxLength="140"
             >
               {this.state.body}
             </textarea>
