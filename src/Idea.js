@@ -35,17 +35,21 @@ class Idea extends React.Component {
       title_blur: true
     });
     this.checkIdeaBlur();
+    //trigger an update request when title field is blurred
+    this.props.onIdeaUpdate(this.props.id, this.state.title, this.state.body);
   };
   handleBodyBlur = event => {
     this.setState({
       body_blur: true
     });
     this.checkIdeaBlur();
+    //trigger an update request when body field is blurred
+    this.props.onIdeaUpdate(this.props.id, this.state.title, this.state.body);
   };
   checkIdeaBlur = () => {
     setTimeout(() => {
       if (this.state.title_blur && this.state.body_blur) {
-        this.props.onIdeaBlur(this.props.id, this.state.title, this.state.body);
+        this.props.onIdeaLeave();
       }
     }, 50);
   };
@@ -56,6 +60,7 @@ class Idea extends React.Component {
         {active ? (
           <div>
             <input
+              className="input__idea__title"
               type="text"
               value={this.state.title}
               onChange={this.handleTitleChange}
@@ -66,6 +71,7 @@ class Idea extends React.Component {
             <br />
             <br />
             <textarea
+              className="input__idea__body"
               rows="7"
               cols="20"
               value={this.state.body}
@@ -77,7 +83,7 @@ class Idea extends React.Component {
           </div>
         ) : (
           <div>
-            <span className="idea-title">{title}</span>
+            <span className="span__idea__title">{title}</span>
             <br />
             <span>{body}</span>
           </div>

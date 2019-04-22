@@ -121,7 +121,17 @@
   transform: matrix(-1, -0.1, 0, 1, 0, 0);
 }
 
-.idea-title {
+.span__idea__title {
   font-size: 1.2em;
   font-weight: bold;
+}
+
+.input__idea__title:focus {
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.input__idea__body:focus {
+  border: 1px solid lightgray;
+  outline: none;
 }

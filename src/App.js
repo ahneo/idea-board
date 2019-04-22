@@ -73,12 +73,13 @@ class App extends React.Component {
       idea_active_id: idea_id
     });
   };
-  handleIdeaBlur = (idea_id, idea_title, idea_body) => {
+  handleIdeaLeave = () => {
     //set state to no active idea
     this.setState({
       idea_active_id: -1
     });
-
+  };
+  handleIdeaUpdate = (idea_id, idea_title, idea_body) => {
     //TODO:call API(POST idea/update) to update idea
     this.updateIdea(idea_id, idea_title, idea_body);
   };
@@ -118,7 +119,8 @@ class App extends React.Component {
               body={idea.body}
               active={this.state.idea_active_id === idea.id}
               onIdeaClick={this.handleIdeaClick}
-              onIdeaBlur={this.handleIdeaBlur}
+              onIdeaLeave={this.handleIdeaLeave}
+              onIdeaUpdate={this.handleIdeaUpdate}
             />
           );
         })}
