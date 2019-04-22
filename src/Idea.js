@@ -3,7 +3,9 @@ import React from "react";
 class Idea extends React.Component {
   state = {
     title: this.props.title,
-    body: this.props.body
+    body: this.props.body,
+    title_blur: false,
+    body_blur: true
   };
   handleIdeaClick = event => {
     this.props.onIdeaClick(this.props.id);
@@ -18,6 +20,35 @@ class Idea extends React.Component {
       body: event.target.value
     });
   };
+  handleTitleFocus = event => {
+    this.setState({
+      title_blur: false
+    });
+  };
+  handleBodyFocus = event => {
+    this.setState({
+      body_blur: false
+    });
+  };
+  handleTitleBlur = event => {
+    this.setState({
+      title_blur: true
+    });
+    this.checkIdeaBlur();
+  };
+  handleBodyBlur = event => {
+    this.setState({
+      body_blur: true
+    });
+    this.checkIdeaBlur();
+  };
+  checkIdeaBlur = () => {
+    setTimeout(() => {
+      if (this.state.title_blur && this.state.body_blur) {
+        this.props.onIdeaBlur();
+      }
+    }, 50);
+  };
   render() {
     const { id, title, body, active } = this.props;
     return (
@@ -28,6 +59,8 @@ class Idea extends React.Component {
               type="text"
               value={this.state.title}
               onChange={this.handleTitleChange}
+              onFocus={this.handleTitleFocus}
+              onBlur={this.handleTitleBlur}
               autoFocus={true}
             />
             <br />
@@ -36,6 +69,8 @@ class Idea extends React.Component {
               rows="7"
               cols="20"
               onChange={this.handleBodyChange}
+              onFocus={this.handleBodyFocus}
+              onBlur={this.handleBodyBlur}
               maxLength="140"
             >
               {this.state.body}

@@ -68,8 +68,15 @@ class App extends React.Component {
     });
   };
   handleIdeaClick = idea_id => {
+    //set state of current active idea
     this.setState({
       idea_active_id: idea_id
+    });
+  };
+  handleIdeaBlur = () => {
+    //set state to no active idea
+    this.setState({
+      idea_active_id: -1
     });
   };
   render() {
@@ -94,6 +101,7 @@ class App extends React.Component {
               body={idea.body}
               active={this.state.idea_active_id === idea.id}
               onIdeaClick={this.handleIdeaClick}
+              onIdeaBlur={this.handleIdeaBlur}
             />
           );
         })}
