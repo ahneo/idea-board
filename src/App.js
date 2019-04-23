@@ -39,21 +39,21 @@ class App extends React.Component {
         created_date: "2019-01-01T23:28:56.782Z",
         title: "Idea 1",
         body:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat ante quis risus imperdiet posuere."
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices tristique libero. Donec semper neque vitae risus euismod sollicitudin."
       },
       {
         id: 2,
         created_date: "2019-02-02T23:28:56.782Z",
         title: "Idea 2",
         body:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat ante quis risus imperdiet posuere."
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices tristique libero. Donec semper neque vitae risus euismod sollicitudin."
       },
       {
         id: 3,
         created_date: "2019-03-03T23:28:56.782Z",
         title: "Idea 3",
         body:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat ante quis risus imperdiet posuere."
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices tristique libero. Donec semper neque vitae risus euismod sollicitudin."
       },
       {
         id: 4,
@@ -119,11 +119,13 @@ class App extends React.Component {
       idea_active_id: idea_id
     });
   };
-  handleIdeaLeave = () => {
+  handleIdeaLeave = idea_id => {
     //set state to no active idea
-    this.setState({
-      idea_active_id: -1
-    });
+    if (this.state.idea_active_id === idea_id) {
+      this.setState({
+        idea_active_id: -1
+      });
+    }
   };
   handleIdeaUpdate = (idea_id, idea_title, idea_body) => {
     this.updateIdea(idea_id, idea_title, idea_body);

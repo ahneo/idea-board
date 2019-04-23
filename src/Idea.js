@@ -2,6 +2,8 @@ import React from "react";
 
 class Idea extends React.Component {
   state = {
+    MAX_CHARACTERS: 140,
+    REMAINING_CHARACTER_COUNT: 15,
     title: this.props.title,
     body: this.props.body,
     isTitleBlurred: false,
@@ -50,9 +52,9 @@ class Idea extends React.Component {
   checkIdeaBlur = () => {
     setTimeout(() => {
       if (this.state.isTitleBlurred && this.state.isBodyBlurred) {
-        this.props.onIdeaLeave();
+        this.props.onIdeaLeave(this.props.id);
       }
-    }, 50);
+    }, 20);
   };
   handleMouseEnter = event => {
     this.setState({
@@ -88,8 +90,6 @@ class Idea extends React.Component {
               onBlur={this.handleTitleBlur}
               autoFocus={true}
             />
-            <br />
-            <br />
             <textarea
               className="input__idea__body"
               rows="7"
@@ -100,6 +100,13 @@ class Idea extends React.Component {
               onBlur={this.handleBodyBlur}
               maxLength="140"
             />
+            {this.state.MAX_CHARACTERS - this.state.body.length <
+            this.state.REMAINING_CHARACTER_COUNT ? (
+              <p className="text__characters__left">
+                {this.state.MAX_CHARACTERS - this.state.body.length} characters
+                left
+              </p>
+            ) : null}
           </div>
         ) : (
           <div>

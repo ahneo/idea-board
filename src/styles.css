@@ -163,3 +163,13 @@
   text-decoration: none;
   text-align: center;
 }
+
+.input__idea__title {
+  margin-bottom: 7px;
+}
+
+.text__characters__left {
+  font-family: "system-ui";
+  font-size: 10px;
+  margin: 0;
+}
